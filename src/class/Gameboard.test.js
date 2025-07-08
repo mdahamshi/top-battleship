@@ -23,6 +23,8 @@ describe("Testing Gameboard class", () => {
     expect(board.getCell(0, 1).isMissed()).toBeTruthy();
     expect(board.getCell(0, 0).isHit()).toBeTruthy();
     expect(ship.isSunk()).toBeTruthy();
+    board.receiveAttack(9, 0);
+    expect(board.allShipsSunk()).toBeTruthy();
   });
   test("getID method", () => {
     expect(board.getID()).toMatch(/board/);

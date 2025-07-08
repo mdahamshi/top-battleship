@@ -57,6 +57,7 @@ export class Gameboard {
     if(! cordinates)
       return null;
     cordinates.forEach(([r, c]) => this.getCell(r, c).setValue(ship));
+    this.#ships.push(ship);
     return ship;
   }
   isEmpty(row, col) {
