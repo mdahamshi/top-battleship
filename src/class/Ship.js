@@ -1,20 +1,23 @@
-
+import {generateID} from '@sarawebs/sb-utils';
 export class Ship {
   #length = null;
   #hitNumber = 0;
-  #sunk = false;
+  #id;
   constructor(length) {
     this.#length = length;
+    this.#id = generateID('ship');
   }
-
+  get length() {
+    return this.#length;
+  }
   hit() {
     this.#hitNumber++;
     return this.#hitNumber;
   }
   isSunk() {
-    return this.#sunk;
+    return this.#hitNumber >= this.#length;
   }
-  length() {
-    return this.#length;
+  getID() {
+    return this.#id;
   }
 }

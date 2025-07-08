@@ -8,8 +8,16 @@ describe("Testing ship class", () => {
   });
   test("isSumk method", () => {
     expect(ship.isSunk()).toEqual(false);
+    for(let i = 0; i <= ship.length; i++)
+      ship.hit();
+    expect(ship.isSunk()).toBeTruthy();
+
   });
   test("length method", () => {
-    expect(ship.length()).toEqual(4);
+    expect(ship.length).toEqual(4);
   });
+  test("getID method", () => {
+    expect(ship.getID()).toMatch(/ship/);
+  });
+  
 });
