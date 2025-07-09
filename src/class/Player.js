@@ -22,7 +22,8 @@ export class Player {
   getRandomCord(size = this.getBoard().size()) {
     const row = Math.floor(Math.random() * size);
     const col = Math.floor(Math.random() * size);
-    return [row, col];
+    const direction = Math.round(Math.random()) ? 'H' : 'V';
+    return [row, col, direction];
   }
   getBoard = () => this.#board;
   getID = () => this.#id;
