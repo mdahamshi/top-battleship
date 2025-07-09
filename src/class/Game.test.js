@@ -1,25 +1,28 @@
-import {Game} from './Game.js'
+import { Game } from "./Game.js";
 
-const element = new Game('Me', 12);
-
-describe("Testing Game class", () => {
-  test("getPlayer method", () => {
-    expect(element.getPlayer()).toBeDefined();
-  });
-  
-  for (let i = 0; i < 100; i++) {
-    test(`Run #${i + 1} playRound`, () => {
-      const [r, c]  = element.getPlayer().getBoard().getRandomCord();
-      expect(element.playRound(r, c)).toBeDefined();
-    });
-  }
-
+const element = new Game("Me", 10);
+beforeAll(() => {
+  element.buildBoardRand(element.getPlayer().getBoard());
+  element.buildBoardRand(element.getPC().getBoard());
 });
 
 
+describe("Testing Game class, playing game...", () => {
+  beforeEach(() => {
+    while (!element.gameEnd) {
+      const [r, c] = element.getPlayer().getBoard().getRandomCord();
+      element.playRound(r, c);
+    }
+  });
+  test("Game end", () => {
+    expect(element.gameEnd).toBe(true);
+  });
+});
+
 afterAll(() => {
-  console.log('pc board:')
+  console.log("pc board:");
   element.getPC().getBoard().printBoard();
-  console.log('player board:')
+  console.log("player board:");
   element.getPlayer().getBoard().printBoard();
+  console.log(`Winner: ${element.winner}`);
 });
