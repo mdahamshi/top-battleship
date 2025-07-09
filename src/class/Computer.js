@@ -2,17 +2,20 @@ import { Player } from "./Player.js";
 
 export class Computer extends Player {
   availableMoves = [];
-  constructor() {
-    super("Computer");
+  constructor(boardSize = 10) {
+    super("Computer", boardSize);
     this.prepareMoves(this.getBoard().size());
   }
 
   randomAttack(board) {
+    return this.attack(board);
+  }
+  attack(board) {
     if (this.availableMoves.length === 0) return false;
 
     const [row, col] = this.availableMoves.pop();
 
-    return this.attack(row, col, board);
+    return super.attack(row, col, board);
   }
   prepareMoves(size) {
     for (let row = 0; row < size; row++) {
@@ -29,9 +32,5 @@ export class Computer extends Player {
       ];
     }
   }
-  getRandomCord(size) {
-    const row = Math.floor(Math.random() * size);
-    const col = Math.floor(Math.random() * size);
-    return [row, col];
-  }
+ 
 }

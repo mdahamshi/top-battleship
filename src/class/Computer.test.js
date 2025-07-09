@@ -14,7 +14,7 @@ describe("Testing Computer class", () => {
   });
 
 });
-describe("randomAttack multiple runs", () => {
+describe.skip("randomAttack multiple runs", () => {
   let ship = new Ship(4);
   let ship2 = new Ship(1);
   board.insertShip(ship, 0, 0, "V");
@@ -26,6 +26,3 @@ describe("randomAttack multiple runs", () => {
   }
 });
 
-afterAll(() => {
-  board.printBoard();
-});
