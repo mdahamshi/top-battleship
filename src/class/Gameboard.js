@@ -8,11 +8,11 @@ export class Gameboard {
   #hit = [];
   #board = [];
   #id;
-  constructor() {
-    this.#board = createBoard(this.#boardSize, this.#boardSize, (boardRow) =>
+  constructor(size = 10) {
+    this.#board = createBoard(size, size, (boardRow) =>
       boardRow.push(new Cell()),
     );
-
+    this.#boardSize = size;
     this.#id = generateID("board");
   }
   getID() {
