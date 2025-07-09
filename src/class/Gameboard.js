@@ -72,12 +72,13 @@ export class Gameboard {
       cell.getValue().hit();
       cell.setHit();
       this.#hit.push([row, col]);
-      return;
+      return true;
     }
-    if (!cell.isEmpty()) return;
+    if (!cell.isEmpty()) return false;
 
     cell.setMissed();
     this.#missed.push([row, col]);
+    return true;
   }
   allShipsSunk() {
     return this.#ships.every((ship) => ship.isSunk());

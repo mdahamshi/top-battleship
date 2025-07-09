@@ -33,6 +33,3 @@ describe("Testing Gameboard class", () => {
     expect(board instanceof Gameboard).toBeTruthy();
   });
 });
-afterAll(() => {
-  board.printBoard();
-});
