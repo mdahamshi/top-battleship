@@ -64,7 +64,10 @@ export class Gameboard {
     return this.getCell(row, col).isEmpty();
   }
   isValid(cordinate) {
-    return cordinate[0] < this.#boardSize && cordinate[1] < this.#boardSize;
+    return cordinate[0] < this.#boardSize && 
+    cordinate[1] < this.#boardSize &&
+    cordinate[0] >= 0 && 
+    cordinate[1] >= 0;
   }
   receiveAttack(row, col) {
     const cell = this.getCell(row, col);
@@ -90,4 +93,7 @@ export class Gameboard {
     const boardWithCellValues = this.#board.map((row) => row.map((cell) => cell.getValue()));
     console.table(boardWithCellValues);
   };
+  size() {
+    return this.#boardSize;
+  }
 }
