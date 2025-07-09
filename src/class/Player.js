@@ -22,4 +22,5 @@ export class Player {
 
   getBoard = () => this.#board;
   getID = () => this.#id;
+  getName = () => this.name;
 }
