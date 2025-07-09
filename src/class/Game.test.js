@@ -7,11 +7,9 @@ describe("Testing Game class", () => {
     expect(element.getPlayer()).toBeDefined();
   });
   
-  
-  
   for (let i = 0; i < 100; i++) {
     test(`Run #${i + 1} playRound`, () => {
-      const [r, c]  = element.getPlayer().getRandomCord();
+      const [r, c]  = element.getPlayer().getBoard().getRandomCord();
       expect(element.playRound(r, c)).toBeDefined();
     });
   }

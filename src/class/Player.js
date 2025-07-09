@@ -19,12 +19,7 @@ export class Player {
   movePlayed(row, col) {
     return this.previousMoves.some(([r, c]) => r === row && c === col);
   }
-  getRandomCord(size = this.getBoard().size()) {
-    const row = Math.floor(Math.random() * size);
-    const col = Math.floor(Math.random() * size);
-    const direction = Math.round(Math.random()) ? 'H' : 'V';
-    return [row, col, direction];
-  }
+
   getBoard = () => this.#board;
   getID = () => this.#id;
 }

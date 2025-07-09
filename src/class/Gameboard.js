@@ -2,6 +2,8 @@ import { Ship } from "./Ship.js";
 import { generateID, createBoard } from "@sarawebs/sb-utils";
 import { Cell } from "./Cell.js";
 export class Gameboard {
+  static HORAIZONAL = 'H';
+  static VERTICAL = 'V';
   #boardSize = 10;
   #ships = [];
   #missed = [];
@@ -24,8 +26,8 @@ export class Gameboard {
   getCell(row, col) {
     return this.#board[row][col];
   }
-  insertShip(ship, row, col, direction = "H") {
-    if (!(ship instanceof Ship) || ! this.isValid([row, col])) return null;
+  insertShip(ship, row, col, direction = Gameboard.HORAIZONAL) {
+    if (!(ship instanceof Ship) || !this.isValid([row, col])) return null;
     let directionCapital = direction.toUpperCase();
     const length = ship.length;
     const makeEndCoordinate = {
@@ -54,8 +56,7 @@ export class Gameboard {
     };
 
     const cordinates = makeEndCoordinate[directionCapital]([row, col]);
-    if(! cordinates)
-      return null;
+    if (!cordinates) return null;
     cordinates.forEach(([r, c]) => this.getCell(r, c).setValue(ship));
     this.#ships.push(ship);
     return ship;
@@ -64,10 +65,12 @@ export class Gameboard {
     return this.getCell(row, col).isEmpty();
   }
   isValid(cordinate) {
-    return cordinate[0] < this.#boardSize && 
-    cordinate[1] < this.#boardSize &&
-    cordinate[0] >= 0 && 
-    cordinate[1] >= 0;
+    return (
+      cordinate[0] < this.#boardSize &&
+      cordinate[1] < this.#boardSize &&
+      cordinate[0] >= 0 &&
+      cordinate[1] >= 0
+    );
   }
   receiveAttack(row, col) {
     const cell = this.getCell(row, col);
@@ -90,9 +93,17 @@ export class Gameboard {
     return this.#board;
   }
   printBoard = () => {
-    const boardWithCellValues = this.#board.map((row) => row.map((cell) => cell.getValue()));
+    const boardWithCellValues = this.#board.map((row) =>
+      row.map((cell) => cell.getValue()),
+    );
     console.table(boardWithCellValues);
   };
+  getRandomCord(size = this.size()) {
+    const row = Math.floor(Math.random() * size);
+    const col = Math.floor(Math.random() * size);
+    const direction = Math.round(Math.random()) ? Gameboard.HORAIZONAL : Gameboard.VERTICAL;
+    return [row, col, direction];
+  }
   size() {
     return this.#boardSize;
   }
