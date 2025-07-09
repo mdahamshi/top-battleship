@@ -1,9 +1,7 @@
-import {Cell} from './Cell.js'
+import { Cell } from "./Cell.js";
 import { Ship } from "./Ship.js";
 
-
 const element = new Cell();
-
 
 describe("Testing Cell class", () => {
   test("isEmpty method", () => {
@@ -30,5 +28,4 @@ describe("Testing Cell class", () => {
   test("cell instanceof", () => {
     expect(element instanceof Cell).toBeTruthy();
   });
-  
 });

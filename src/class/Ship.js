@@ -1,11 +1,11 @@
-import {generateID} from '@sarawebs/sb-utils';
+import { generateID } from "@sarawebs/sb-utils";
 export class Ship {
   #length = null;
   #hitNumber = 0;
   #id;
   constructor(length) {
     this.#length = length;
-    this.#id = generateID('ship');
+    this.#id = generateID("ship");
   }
   get length() {
     return this.#length;

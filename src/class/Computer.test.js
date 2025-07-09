@@ -12,17 +12,15 @@ describe("Testing Computer class", () => {
   test("getBoard method", () => {
     expect(element.getBoard()).toBeTruthy();
   });
-
 });
 describe.skip("randomAttack multiple runs", () => {
   let ship = new Ship(4);
   let ship2 = new Ship(1);
   board.insertShip(ship, 0, 0, "V");
-  board.insertShip(ship2, 9, 0, "h")
+  board.insertShip(ship2, 9, 0, "h");
   for (let i = 0; i < 100; i++) {
     test(`Run #${i + 1} randomAttack`, () => {
       expect(element.randomAttack(board)).toBeTruthy();
     });
   }
 });
-

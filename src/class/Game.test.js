@@ -6,7 +6,6 @@ beforeAll(() => {
   element.buildBoardRand(element.getPC().getBoard());
 });
 
-
 describe("Testing Game class, playing game...", () => {
   beforeEach(() => {
     while (!element.gameEnd) {

@@ -32,5 +32,4 @@ export class Computer extends Player {
       ];
     }
   }
- 
 }

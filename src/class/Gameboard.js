@@ -2,8 +2,8 @@ import { Ship } from "./Ship.js";
 import { generateID, createBoard } from "@sarawebs/sb-utils";
 import { Cell } from "./Cell.js";
 export class Gameboard {
-  static HORAIZONAL = 'H';
-  static VERTICAL = 'V';
+  static HORAIZONAL = "H";
+  static VERTICAL = "V";
   #boardSize = 10;
   #ships = [];
   #missed = [];
@@ -101,7 +101,9 @@ export class Gameboard {
   getRandomCord(size = this.size()) {
     const row = Math.floor(Math.random() * size);
     const col = Math.floor(Math.random() * size);
-    const direction = Math.round(Math.random()) ? Gameboard.HORAIZONAL : Gameboard.VERTICAL;
+    const direction = Math.round(Math.random())
+      ? Gameboard.HORAIZONAL
+      : Gameboard.VERTICAL;
     return [row, col, direction];
   }
   size() {

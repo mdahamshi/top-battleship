@@ -4,7 +4,7 @@ import { Ship } from "./Ship.js";
 export class Cell {
   #value;
   #id;
-  static MISSED = 'missed'
+  static MISSED = "missed";
   static HIT = "hit";
   constructor(val = "") {
     this.#value = val;

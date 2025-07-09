@@ -10,10 +10,10 @@ describe("Testing Gameboard class", () => {
     let ship = new Ship(4);
     let ship2 = new Ship(1);
     board.insertShip(ship, 0, 0, "V");
-    expect(board.insertShip(ship, 0, 0, 'v')).toBeNull();
-    expect(board.insertShip(ship2, 9, 0, 'v')).toBeTruthy();
-    expect(board.insertShip(ship2, 10, 0, 'v')).toBeNull();
-    expect(board.insertShip(ship2, 0, 0, 'v')).toBeNull();
+    expect(board.insertShip(ship, 0, 0, "v")).toBeNull();
+    expect(board.insertShip(ship2, 9, 0, "v")).toBeTruthy();
+    expect(board.insertShip(ship2, 10, 0, "v")).toBeNull();
+    expect(board.insertShip(ship2, 0, 0, "v")).toBeNull();
     expect(board.getCell(0, 0).isShip()).toBeTruthy();
   });
   test("receiveAttack method", () => {
