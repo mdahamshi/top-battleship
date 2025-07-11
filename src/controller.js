@@ -13,8 +13,11 @@ export class Controller {
     this.game = this.model.game;
     this.view.renderBoard(this.view.player_board, this.game.getPlayer());
     this.view.renderBoard(this.view.pc_board, this.game.getPC());
+    this.message("Your turn...");
   }
-
+  message(msg) {
+    this.view.updateMessage(msg);
+  }
   initBoardEvents(board) {
     board.addEventListener("click", (e) => {
       const cell = e.target;
@@ -29,12 +32,12 @@ export class Controller {
         return;
       }
 
-      this.view.updateMessage("PC turn...");
+      this.message("PC turn...");
       setTimeout(() => {
         this.game.playRound(0, 0);
         this.view.renderBoard(this.view.player_board, this.game.getPlayer());
         this.view.pcBoard("enable");
-        this.view.updateMessage("Your turn...");
+        this.message("Your turn...");
       }, 600);
     });
 
