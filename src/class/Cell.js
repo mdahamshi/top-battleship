@@ -10,6 +10,12 @@ export class Cell {
     this.#value = val;
     this.#id = generateID("cell");
   }
+  getType() {
+    if (this.isEmpty()) return "empty";
+    if (this.isShip()) return "ship";
+    if (this.isHit()) return "hit";
+    if (this.isMissed()) return "missed";
+  }
   setValue = (val) => (this.#value = val);
   setMissed = () => (this.#value = Cell.MISSED);
   setHit = () => (this.#value = Cell.HIT);

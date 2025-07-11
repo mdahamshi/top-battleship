@@ -1,0 +1,80 @@
+.battlefield {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+  font-family: sans-serif;
+}
+
+.grid-board {
+  display: grid;
+  grid-template-columns: 2em repeat(10, 2em);
+  grid-template-rows: 2em repeat(10, 2em);
+  background-color: #ccc;
+}
+
+.cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  outline: 1px solid #b4b4ff;
+  font-size: 0.8em;
+  position: relative;
+}
+
+#pc-board .cell:not(.marker):hover {
+  background: gainsboro;
+  cursor: pointer;
+}
+
+.cell.marker {
+  font-weight: bold;
+  outline: transparent;
+}
+
+.ship {
+  background: #2b7;
+}
+
+#player-board .cell[data-type="ship"] {
+  background: #2b7;
+  outline: none;
+}
+
+.cell[data-type="hit"]::after {
+  content: "✕"; /* Unicode X character */
+  color: red;
+  font-size: 1.5em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.cell[data-type="missed"]::after {
+  content: "";
+  width: 0.6em;
+  height: 0.6em;
+  background-color: gray;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.cell[data-type="missed"],
+.cell[data-type="hit"] {
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.8;
+}
+
+#pc-board.disabled {
+  pointer-events: none;
+  opacity: 0.6;
+  filter: grayscale(0.5);
+  cursor: not-allowed;
+}

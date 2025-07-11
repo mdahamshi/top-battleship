@@ -31,6 +31,8 @@ body {
   height: 100dvh;
   display: flex;
   flex-direction: column;
+  max-width: 980px;
+  margin: auto;
 }
 
 footer {
@@ -74,13 +76,33 @@ button.sb-button {
   outline: none;
   font-weight: bold;
   font-size: 16px;
+  max-width: 200px;
   border: none;
   white-space: nowrap;
 }
-
+#content {
+  align-items: center;
+}
 button:active,
-.clickable:active,
-.clickable {
+.clickable:active {
   filter: brightness(0.9);
   transform: scale(0.98);
+}
+#boards {
+  justify-content: center;
+}
+
+#message {
+  text-align: center;
+  color: black;
+  border: 2px solid var(--sb-theme-color);
+  border-radius: 4px;
+  padding: 6px;
+  color: var(--sb-theme-color);
+  align-self: center;
+}
+header nav button {
+  font-size: 16px;
+  border: none;
+  background-color: rgb(255, 255, 255);
 }

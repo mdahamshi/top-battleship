@@ -19,9 +19,9 @@ describe("Testing Cell class", () => {
     element.setValue(new Ship());
     expect(element.isShip()).toBeTruthy();
   });
-  // test("length method", () => {
-  //   expect(ship.length()).toEqual(4);
-  // });
+  test("getType method", () => {
+    expect(element.getType()).toBe("ship");
+  });
   test("getID method", () => {
     expect(element.getID()).toMatch(/cell/);
   });
