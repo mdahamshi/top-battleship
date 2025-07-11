@@ -106,3 +106,8 @@ header nav button {
   border: none;
   background-color: rgb(255, 255, 255);
 }
+@media only screen and (min-width: 700px) {
+  #boards {
+    flex-direction: row;
+  }
+}
