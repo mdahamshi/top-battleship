@@ -27,11 +27,29 @@
   --sb-border-color-thin: #f0f1f4;
 }
 
+nav {
+  justify-content: space-between;
+  display: flex;
+  padding: var(--sb-padding);
+  max-width: 980px;
+  margin: auto;
+}
+
+header {
+  border-bottom: 1px solid var(--sb-border-color-thin);
+}
+
+#user-img {
+  width: 40px;
+  border-radius: 50%;
+  background-color: var(--lite-gray);
+  object-fit: cover;
+}
+
 body {
   height: 100dvh;
   display: flex;
   flex-direction: column;
-  max-width: 980px;
   margin: auto;
 }
 
@@ -80,14 +98,17 @@ button.sb-button {
   border: none;
   white-space: nowrap;
 }
+
 #content {
   align-items: center;
 }
+
 button:active,
 .clickable:active {
   filter: brightness(0.9);
   transform: scale(0.98);
 }
+
 #boards {
   justify-content: center;
 }
@@ -101,11 +122,13 @@ button:active,
   color: var(--sb-theme-color);
   align-self: center;
 }
+
 header nav button {
   font-size: 16px;
   border: none;
   background-color: rgb(255, 255, 255);
 }
+
 @media only screen and (min-width: 700px) {
   #boards {
     flex-direction: row;
