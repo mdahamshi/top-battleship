@@ -58,6 +58,7 @@ export class Controller {
     restart.addEventListener("click", (e) => {
       e.preventDefault();
       this.init(this.name);
+      this.view.pcBoard("enable");
     });
 
     document
