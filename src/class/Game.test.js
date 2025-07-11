@@ -19,9 +19,14 @@ describe("Testing Game class, playing game...", () => {
 });
 
 afterAll(() => {
-  console.log("pc board:");
-  element.getPC().getBoard().printBoard();
-  console.log("player board:");
-  element.getPlayer().getBoard().printBoard();
-  console.log(`Winner: ${element.winner}`);
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log("pc board:");
+      element.getPC().getBoard().printBoard();
+      console.log("player board:");
+      element.getPlayer().getBoard().printBoard();
+      console.log(`Winner: ${element.winner}`);
+      resolve();
+    }, 1000);
+  });
 });
