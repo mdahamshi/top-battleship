@@ -18,27 +18,36 @@ export class Controller {
   message(msg) {
     this.view.updateMessage(msg);
   }
+  playRound(row, col) {
+    this.view.pcBoard("disabled");
+
+    this.game.playRound(row, col);
+    this.view.renderBoard(this.view.pc_board, this.game.getPC());
+    this.message("PC turn...");
+  }
+  pcPlay() {
+    this.game.playRound(0, 0);
+    this.view.renderBoard(this.view.player_board, this.game.getPlayer());
+    this.view.pcBoard("enable");
+    this.message("Your turn...");
+  }
   initBoardEvents(board) {
     board.addEventListener("click", (e) => {
       const cell = e.target;
       if (!cell.dataset.row) return;
-      this.view.pcBoard("disabled");
 
-      this.game.playRound(cell.dataset.row, cell.dataset.col);
-      this.view.renderBoard(this.view.pc_board, this.game.getPC());
+      this.playRound(cell.dataset.row, cell.dataset.col);
+
+      if (!this.gameEnd) {
+        setTimeout(() => {
+          this.pcPlay();
+        }, 600);
+      }
       if (this.game.gameEnd) {
         this.view.updateMessage(`${this.game.winner} WON !`);
         this.view.pcBoard("disabled");
         return;
       }
-
-      this.message("PC turn...");
-      setTimeout(() => {
-        this.game.playRound(0, 0);
-        this.view.renderBoard(this.view.player_board, this.game.getPlayer());
-        this.view.pcBoard("enable");
-        this.message("Your turn...");
-      }, 600);
     });
 
     const restart = document.getElementById("btn-restart");
