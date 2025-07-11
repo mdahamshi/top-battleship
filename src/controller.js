@@ -20,16 +20,25 @@ export class Controller {
   }
   playRound(row, col) {
     this.view.pcBoard("disabled");
-
     this.game.playRound(row, col);
     this.view.renderBoard(this.view.pc_board, this.game.getPC());
     this.message("PC turn...");
+    this.checkEnd();
   }
   pcPlay() {
     this.game.playRound(0, 0);
     this.view.renderBoard(this.view.player_board, this.game.getPlayer());
     this.view.pcBoard("enable");
     this.message("Your turn...");
+    this.checkEnd();
+  }
+  checkEnd() {
+    if (this.game.gameEnd) {
+      this.view.updateMessage(`${this.game.winner} WON !`);
+      this.view.pcBoard("disabled");
+      return true;
+    }
+    return false;
   }
   initBoardEvents(board) {
     board.addEventListener("click", (e) => {
@@ -42,11 +51,6 @@ export class Controller {
         setTimeout(() => {
           this.pcPlay();
         }, 600);
-      }
-      if (this.game.gameEnd) {
-        this.view.updateMessage(`${this.game.winner} WON !`);
-        this.view.pcBoard("disabled");
-        return;
       }
     });
 
