@@ -4,6 +4,7 @@ import { createDialogModal } from "./components/DialogModal.js";
 import makeNameForm from "./components/name-form.js";
 import logoImage from "../asset/logo.svg";
 import userImage from "../asset/woman.png";
+import winnerModal from './components/game-end.js'
 
 export class View {
   constructor(appName) {
@@ -15,6 +16,7 @@ export class View {
     this.player_board = createGridBoard("player-board", "Your board");
     this.pc_board = createGridBoard("pc-board", "PC");
     this.message = document.getElementById("message");
+    this.winnerModal = winnerModal();
     this.initNameForm();
     const user = document.querySelector("#user-img");
     user.src = userImage;
@@ -34,6 +36,17 @@ export class View {
   pcBoard(flag) {
     if (flag === "enable") this.pc_board.classList.remove("disabled");
     else this.pc_board.classList.add("disabled");
+  }
+  showWinner(text) {
+    const name = this.winnerModal.querySelector('#winner-name');
+    name.textContent = text;
+    this.dialog.content.innerHTML = "";
+    this.dialog.content.appendChild(this.winnerModal);
+    this.dialog.showModal();
+  }
+  init() {
+    this.pcBoard('enable');
+    this.dialog.close();
   }
   renderBoard(viewBoard, player) {
     const board = player.getBoard();

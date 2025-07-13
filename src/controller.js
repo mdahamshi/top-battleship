@@ -35,10 +35,16 @@ export class Controller {
   checkEnd() {
     if (this.game.gameEnd) {
       this.view.updateMessage(`${this.game.winner} WON !`);
+      this.view.showWinner(`${this.game.winner} WON !`);
       this.view.pcBoard("disabled");
       return true;
     }
     return false;
+  }
+  restartGame(e) {
+    e.preventDefault();
+    this.init(this.name);
+    this.view.init();
   }
   initBoardEvents(board) {
     board.addEventListener("click", (e) => {
@@ -55,11 +61,10 @@ export class Controller {
     });
 
     const restart = document.getElementById("btn-restart");
-    restart.addEventListener("click", (e) => {
-      e.preventDefault();
-      this.init(this.name);
-      this.view.pcBoard("enable");
-    });
+    restart.addEventListener("click", (e) => this.restartGame(e));
+    this.view.winnerModal
+      .querySelector("button")
+      .addEventListener("click", (e) => this.restartGame(e));
 
     document
       .getElementById("button-start-game")
